@@ -6,19 +6,18 @@ import rawpy
 from PIL import Image, ImageEnhance
 import numpy as np
 
-def convert_raw_to_jpeg(input_folder, output_folder, brightness_factor=1.0, contrast_factor=1.0, saturation_factor=1.0):
+def convert_cr2_to_jpeg(input_folder, output_folder, brightness_factor=1.0, contrast_factor=1.0, saturation_factor=1.0):
     for root, _, files in os.walk(input_folder):
         for file in files:
-            # Check if the file is a raw image (you can adjust the file extensions for other raw formats)
-            if file.lower().endswith((".cr2", ".nef", ".arw")):
+            if file.lower().endswith(".cr2",".nef",".arw"):
                 input_path = os.path.join(root, file)
                 output_path = os.path.join(output_folder, os.path.splitext(file)[0] + ".jpg")
                 
-                # Read the raw file using the appropriate library (rawpy for CR2, other libraries for other formats)
-                # You may need to use different libraries for different raw formats.
+                # Read the CR2 file using rawpy
                 with rawpy.imread(input_path) as raw:
-                    rgb = raw.postprocess()
-                
+                    # Obtain the raw image RGB data
+                    rgb = raw.postprocess(output_bps=8, use_camera_wb=True, bright=1.0)
+
                 # Convert to a Pillow Image
                 image = Image.fromarray(rgb)
                 
