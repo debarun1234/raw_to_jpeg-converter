@@ -1,19 +1,16 @@
-#Code designed for RAW to JPEG you can use any raw file type just have to replace the appropriate extension wherever needed in the code.
-#the code supports .cr2 (canon), .nef (nikon), .arw (sony)
-#Developed by Debarun Ghosh
 import os
 import rawpy
 from PIL import Image, ImageEnhance
 import numpy as np
 
-def convert_cr2_to_jpeg(input_folder, output_folder, brightness_factor=1.0, contrast_factor=1.0, saturation_factor=1.0):
+def convert_raw_to_jpeg(input_folder, output_folder, brightness_factor=1.0, contrast_factor=1.0, saturation_factor=1.0):
     for root, _, files in os.walk(input_folder):
         for file in files:
-            if file.lower().endswith(".cr2",".nef",".arw"):
+            if file.lower().endswith((".cr2", ".nef", ".arw")):
                 input_path = os.path.join(root, file)
                 output_path = os.path.join(output_folder, os.path.splitext(file)[0] + ".jpg")
                 
-                # Read the CR2 file using rawpy
+                # Read the RAW file using rawpy
                 with rawpy.imread(input_path) as raw:
                     # Obtain the raw image RGB data
                     rgb = raw.postprocess(output_bps=8, use_camera_wb=True, bright=1.0)
