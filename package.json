@@ -1,0 +1,11 @@
+{
+  "name": "raw-to-jpeg-converter",
+  "version": "1.0.0",
+  "description": "A project to convert RAW images to JPEG",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
