@@ -34,3 +34,4 @@ jobs:
         context: .
         push: true
         tags: debarun1234/my-image-name:latest
+        
