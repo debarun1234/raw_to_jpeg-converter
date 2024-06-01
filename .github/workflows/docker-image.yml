@@ -12,11 +12,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v4.0.2
-      with:
-        node-version: '20'
-        cache: 'npm'
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
     - name: Set up Docker Buildx
@@ -38,4 +33,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: debarun1234/my-image-name:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}raw_tojpeg-converter:latest
