@@ -33,4 +33,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}raw_tojpeg-converter:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}Raw_to_JPEG-Converter:latest
